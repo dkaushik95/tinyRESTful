@@ -2,7 +2,10 @@ require 'test_helper'
 
 class ApiControllerTest < ActionDispatch::IntegrationTest
   test "should get getdatafromurl" do
-    get api_getdatafromurl_url
+    post api_getdatafromurl_url
+    assert_response 400
+
+    post api_getdatafromurl_url({"url" => 'http://dishantkaushik.me'})
     assert_response :success
   end
 
